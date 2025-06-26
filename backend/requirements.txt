@@ -1,4 +1,4 @@
 fastapi
 uvicorn[standard]
-supabase
+supabase-py
 python-dotenv 

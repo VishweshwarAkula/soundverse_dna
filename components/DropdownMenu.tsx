@@ -14,7 +14,7 @@ export interface MenuItem {
 
 interface DropdownMenuProps {
   items: MenuItem[];
-  trigger: React.ReactElement;
+  trigger: React.ReactElement<any>;
 }
 
 const DropdownMenu: React.FC<DropdownMenuProps> = ({ items, trigger }) => {
@@ -40,7 +40,9 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ items, trigger }) => {
 
   return (
     <div className="relative">
-      {React.cloneElement(trigger, { onClick: handleTriggerClick })}
+      {React.isValidElement(trigger)
+        ? React.cloneElement(trigger, { onClick: handleTriggerClick })
+        : trigger}
 
       {isOpen && (
         <div
